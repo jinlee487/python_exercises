@@ -1,4 +1,4 @@
 # python_exercises
 
-practicing python string manipulation
+practicing python dictionary
 
