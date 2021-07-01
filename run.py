@@ -3,9 +3,11 @@
 # 단어를 출력할 때는 등장한 순서대로 출력해야 하며 ,(콤마)와 .(점)은 출력하지 않아야 합니다.
 
 with open('words.txt', 'r') as file:
-    words = file.readlines()[0].split(" ")
+    words = file.readlines()
     for word in words:
-        if word.find("c") != -1:
-            print(word.strip(".,"))
+        word = word.strip("\n")
+        if word == word[::-1]:
+            print(word)
+
 
     
