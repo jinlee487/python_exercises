@@ -5,16 +5,31 @@
 #  정답에 코드를 작성할 때는
 #  def countdown(n):에 맞춰서 들여쓰기를 해주세요.
 
+class Time:
+    def __init__(self, hour, minute, second):
+        self.hour = hour
+        self.minute = minute
+        self.second = second
 
-class Annie:
-    def __init__(self, health, mana, ability_power):
-        self.health = health
-        self.mana = mana
-        self.ability_power = ability_power
+    @classmethod
+    def from_string(self,time_string):
+        l = time_string.split(":")
+        self.hour = l[0]
+        self.minute = l[1]
+        self.second = l[2]
+        return self
+
+    @staticmethod
+    def is_time_valid(time_string):
+        hour, min, sec = map(int, time_string.split(':'))
+        if hour<=24 and min<60 and sec<=60:
+            return True
+        return False
+
+time_string = input()
  
-    def tibbers(self):
-        print("티버: 피해량 " + str(ability_power * 0.65 + 400))
-
-health, mana, ability_power = map(float, input().split())
-x = Annie(health=health, mana=mana, ability_power=ability_power)
-x.tibbers()
+if Time.is_time_valid(time_string):
+    t = Time.from_string(time_string)
+    print(t.hour, t.minute, t.second)
+else:
+    print('잘못된 시간 형식입니다.')
