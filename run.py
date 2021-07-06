@@ -6,16 +6,15 @@
 #  def countdown(n):에 맞춰서 들여쓰기를 해주세요.
 
 
-def countdown(n):
-    i = n + 1
-    def down():
-        nonlocal i 
-        i -= 1
-        return i
-    return down
-
-n = int(input())
+class Annie:
+    def __init__(self, health, mana, ability_power):
+        self.health = health
+        self.mana = mana
+        self.ability_power = ability_power
  
-c = countdown(n)
-for i in range(n):
-    print(c(), end=' ')
+    def tibbers(self):
+        print("티버: 피해량 " + str(ability_power * 0.65 + 400))
+
+health, mana, ability_power = map(float, input().split())
+x = Annie(health=health, mana=mana, ability_power=ability_power)
+x.tibbers()
