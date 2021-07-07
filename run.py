@@ -1,35 +1,22 @@
-# 표준 입력으로 정수가 입력됩니다. 
-# 다음 소스 코드를 완성하여 함수 c를 
-# 호출할 때마다 숫자가 1씩 줄어들게 만드세요. 
-# 여기서는 함수를 클로저로 만들어야 합니다.
-#  정답에 코드를 작성할 때는
-#  def countdown(n):에 맞춰서 들여쓰기를 해주세요.
+# 다음 소스 코드에서 동물 클래스 Animal과 날개 클래스 Wing을 상속받아
+# 새 클래스 Bird를 작성하여 
+# '먹다', '파닥거리다', '날다', True, True가 각 줄에 출력되게 만드세요.
 
-class Time:
-    def __init__(self, hour, minute, second):
-        self.hour = hour
-        self.minute = minute
-        self.second = second
-
-    @classmethod
-    def from_string(self,time_string):
-        l = time_string.split(":")
-        self.hour = l[0]
-        self.minute = l[1]
-        self.second = l[2]
-        return self
-
-    @staticmethod
-    def is_time_valid(time_string):
-        hour, min, sec = map(int, time_string.split(':'))
-        if hour<=24 and min<60 and sec<=60:
-            return True
-        return False
-
-time_string = input()
+class Animal:
+    def eat(self):
+        print('먹다')
  
-if Time.is_time_valid(time_string):
-    t = Time.from_string(time_string)
-    print(t.hour, t.minute, t.second)
-else:
-    print('잘못된 시간 형식입니다.')
+class Wing:
+    def flap(self):
+        print('파닥거리다')
+
+class Bird(Animal,Wing):
+    def fly(self):
+        print('날다')
+
+b = Bird()
+b.eat()
+b.flap()
+b.fly()
+print(issubclass(Bird, Animal))
+print(issubclass(Bird, Wing))
